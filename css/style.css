@@ -150,7 +150,13 @@ h2,
   opacity: 1;
   visibility: visible;
   transform: translate(0px, -50%);
-  transition: transform 0.8s ease 1.2s;
+  transition: transform 0.8s ease 0.8s;
+}
+
+.wrapper._free .page__pagination {
+  opacity: 0;
+  transform: translate(100px, -50%);
+  transition: all 0.8s ease 0s;
 }
 
 .page__bullet {
