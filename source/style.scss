@@ -26,6 +26,7 @@ body {
 	height: 100%;
 	// line-height: 1.5;
 	font-family: "Inconsolata", monospace;
+	scroll-behavior: smooth;
 }
 .wrapper {
 	opacity: 0;
@@ -179,9 +180,6 @@ h2,
 .wrapper._loaded .header {
 	transform: translate(0px, 0px);
 	transition: transform 0.8s ease 0.8s;
-}
-.header__menu {
-	// padding-left: 50px;
 }
 .menu {
 	display: flex;

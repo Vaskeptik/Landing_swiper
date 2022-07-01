@@ -70,6 +70,7 @@ let pageSlider = new Swiper('.page', {
 	// Отключаем автоинициализацию
 	init: false,
 	freeMode: true,
+	// centeredSlides: true,
 	on: {
 		init: function () {
 			// pageSlider.params.freeMode = true;
@@ -109,6 +110,7 @@ function menuSliderRemove() {
 		menuLinkActive.classList.remove('_active');
 	}
 }
+
 function setScrollType() {
 	if (wrapper.classList.contains('_free')) {
 		wrapper.classList.remove('_free');
@@ -117,15 +119,18 @@ function setScrollType() {
 	for (let index = 0; index < pageSlider.slides.length; index++) {
 		const pageSlide = pageSlider.slides[index];
 		const pageSlideContent = pageSlide.querySelector('.screen__content');
+
 		if (pageSlideContent) {
-			const pageSlideContentHeight = pageSlideContent.offsetHeight;
+			let pageSlideContentHeight = pageSlideContent.offsetHeight;
 			if (pageSlideContentHeight > window.innerHeight) {
 				wrapper.classList.add('_free');
-				// pageSlider.params.freeMode = false;
+				// pageSlider.params.freeMode = true;
 				break;
 			}
 		}
 	}
+	// let dsa = pageSlider.params;
+	// console.log(dsa);
 }
-
 pageSlider.init();
+

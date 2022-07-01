@@ -29,6 +29,7 @@ body {
   color: whitesmoke;
   height: 100%;
   font-family: "Inconsolata", monospace;
+  scroll-behavior: smooth;
 }
 
 .wrapper {
