@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+body {
+  background-color: rgb(34, 34, 34);
+  color: whitesmoke;
+  height: 100%;
+  font-family: "Inconsolata", monospace;
+}
+
+.wrapper {
+  opacity: 0;
+  transition: opacity 0.8s ease 0s;
+  min-height: 100%;
+}
+
+.wrapper._loaded {
+  opacity: 1;
+  transition: opacity 0.8s ease 0s;
+}
+
+.page {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.page__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.screen {
+  flex: 1 0 100%;
+  position: relative;
+}
+
+.screen__content {
+  padding: 100px 24px 24px 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.screen__content-bg {
+  text-align: center;
+}
+
+h2,
+.screen__title {
+  font-family: "Bebas Neue", cursive;
+  letter-spacing: 3px;
+  font-size: 64px;
+  color: rgb(241, 241, 241);
+  display: inline-block;
+}
+
+.screen__title-bg {
+  font-family: "Merienda";
+  background-color: rgba(26, 26, 26, 0.479);
+  padding: 15px 25px;
+  border-radius: 8px;
+  color: white;
+  margin-top: calc(50vh - 170px);
+}
+
+.screen__body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.screen__image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.screen__image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.screen__text {
+  color: whitesmoke;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 36px;
+}
+
+.screen__text p {
+  padding: 0px 50px 0px 0px;
+  margin: 0px 0px 13.5px 0px;
+}
+
+.screen__text p:last-child {
+  margin: 0px 0px 0px 0px;
+}
+
+.page__pagination {
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(100px, -50%);
+  transition: transform 0.8s ease 0s;
+}
+
+.wrapper._loaded .page__pagination {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0px, -50%);
+  transition: transform 0.8s ease 1.2s;
+}
+
+.page__bullet {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.466);
+  margin: 10px 0px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease 0s;
+}
+
+.page__bullet_active {
+  background-color: #6bc072;
+}
+
+.page__scroll {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.page__drag-scroll {
+  position: absolute;
+  top: 5px;
+  left: -5px;
+  width: 100%;
+  cursor: pointer;
+  background-color: #6bc072;
+  border-radius: 24px;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  background-color: rgba(26, 26, 26, 0.479);
+  transform: translate(0px, -100%);
+  transition: transform 0.8s ease 0s;
+}
+
+.wrapper._loaded .header {
+  transform: translate(0px, 0px);
+  transition: transform 0.8s ease 0.8s;
+}
+
+.menu {
+  display: flex;
+  margin: 0 auto;
+  min-height: 50px;
+  max-width: 1240px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.menu__link {
+  font-family: "Inconsolata", monospace;
+  font-size: 24px;
+  color: white;
+  transition: all 0.3s ease 0s;
+}
+
+.menu__link._active {
+  font-size: 28px;
+  color: #a5e9a5;
+  transition: all 0.3s ease 0s;
+}
+
+@media (max-width: 767px) {
+  .screen__title-bg {
+    font-size: 36px;
+  }
+
+  .screen__title {
+    font-size: 48px;
+  }
+
+  .screen__text {
+    font-size: 16px;
+  }
+}
+@media (max-width: 500px) {
+  .screen__title-bg {
+    font-size: 24px;
+  }
+}
