@@ -24,12 +24,16 @@ img {
   vertical-align: top;
 }
 
+html,
+body {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: rgb(34, 34, 34);
   color: whitesmoke;
   height: 100%;
   font-family: "Inconsolata", monospace;
-  scroll-behavior: smooth;
 }
 
 .wrapper {

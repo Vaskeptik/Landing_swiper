@@ -7,7 +7,13 @@ let pageSlider = new Swiper('.page', {
 
 	direction: 'vertical',
 	slidesPerView: 'auto',
-	parallax: 'true',
+	parallax: true,
+	freeMode: true,
+	breakpoints: {
+		1220: {
+			freeMode: true,
+		},
+	},
 	// Управление клавиатурой
 	keyboard: {
 		// Включить\выключить
@@ -35,6 +41,7 @@ let pageSlider = new Swiper('.page', {
 
 	// Скорость
 	speed: 800,
+
 
 	// Обновить свайпер
 	// при изменении элементов слайдера
@@ -66,17 +73,20 @@ let pageSlider = new Swiper('.page', {
 		// Возможность перетаскивать скролл
 		draggable: true
 	},
+	slideToClickedSlide: false,
 	// resizeObserver: true,
 	// Отключаем автоинициализацию
 	init: false,
-	freeMode: true,
 	// centeredSlides: true,
+
 	on: {
 		init: function () {
 			// pageSlider.params.freeMode = true;
 			menuSlider();
 			setScrollType();
+			kekWait();
 			wrapper.classList.add('_loaded');
+
 		},
 		slideChange: function () {
 			menuSliderRemove();
@@ -84,10 +94,51 @@ let pageSlider = new Swiper('.page', {
 		},
 		resize: function () {
 			setScrollType();
+			kekWait();
 		}
-	}
+	},
 })
+const allTitle = document.querySelectorAll('.screen__title');
+const allText = document.querySelectorAll('.screen__text');
+let test = allText[0].getAttribute('data-swiper-parallax-opacity');
+console.log(test);
 
+function kekWait() {
+	if (wrapper.classList.contains('_free')) {
+		for (i = 0; i < allTitle.length; i++) {
+
+			var zag = allTitle[i];
+			zag.setAttribute('data-swiper-parallax-opacity', '1');
+			zag.setAttribute('data-swiper-parallax', '');
+			zag.setAttribute('data-swiper-parallax-duration', '');
+		}
+
+		for (i = 0; i < allText.length; i++) {
+			var jija = allText[i];
+			jija.setAttribute('data-swiper-parallax-opacity', '1');
+			jija.setAttribute('data-swiper-parallax', '');
+			jija.setAttribute('data-swiper-parallax-duration', '');
+		}
+
+	} else {
+
+		for (i = 0; i < allTitle.length; i++) {
+
+			var zag = allTitle[i];
+			zag.setAttribute('data-swiper-parallax-opacity', '0');
+			zag.setAttribute('data-swiper-parallax', '50%');
+			zag.setAttribute('data-swiper-parallax-duration', '1000');
+		}
+
+		for (i = 0; i < allText.length; i++) {
+			var jija = allText[i];
+			jija.setAttribute('data-swiper-parallax-opacity', '0');
+			jija.setAttribute('data-swiper-parallax', '50%');
+			jija.setAttribute('data-swiper-parallax-duration', '1000');
+		}
+		pageSlider.params.parallax.enabled = true;
+	};
+};
 
 let menuLinks = document.querySelectorAll('.menu__link');
 function menuSlider() {
@@ -115,7 +166,9 @@ function setScrollType() {
 	if (wrapper.classList.contains('_free')) {
 		wrapper.classList.remove('_free');
 		// pageSlider.params.freeMode = false;
-	}
+		// pageSlider.params.parallax = false;
+	};
+
 	for (let index = 0; index < pageSlider.slides.length; index++) {
 		const pageSlide = pageSlider.slides[index];
 		const pageSlideContent = pageSlide.querySelector('.screen__content');
@@ -124,6 +177,7 @@ function setScrollType() {
 			let pageSlideContentHeight = pageSlideContent.offsetHeight;
 			if (pageSlideContentHeight > window.innerHeight) {
 				wrapper.classList.add('_free');
+				// pageSlider.params.parallax = true;
 				// pageSlider.params.freeMode = true;
 				break;
 			}
