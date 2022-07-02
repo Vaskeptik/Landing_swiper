@@ -136,7 +136,7 @@ function kekWait() {
 			jija.setAttribute('data-swiper-parallax', '50%');
 			jija.setAttribute('data-swiper-parallax-duration', '1000');
 		}
-		pageSlider.params.parallax.enabled = true;
+		// pageSlider.params.parallax.enabled = true;
 	};
 };
 
